@@ -1,4 +1,4 @@
 mynotes_data
 ============
 
-creates database for notes data from text files
+Creates database for notes data from text files
