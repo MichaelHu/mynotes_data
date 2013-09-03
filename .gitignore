@@ -1,0 +1,8 @@
+*.swp
+.DS_Store
+.svn
+*.bak
+__TMP.sql
+
+/input/
+/output/
