@@ -12,13 +12,22 @@ begin
 
     set @_start_id = 1;
 
-    select id into @_start_id from t_notes
-        where t_notes.article_id = article_id 
-        limit 1; 
+    if context_num > 0 then 
 
-    select id as line_num, t_notes.article_id, text from t_notes 
-        where t_notes.article_id = article_id
-            and abs( t_notes.id - @_start_id ) <= context_num;
+        select id into @_start_id from t_notes
+            where t_notes.article_id = article_id 
+            limit 1; 
+
+        select id as line_num, t_notes.article_id, text from t_notes 
+            where t_notes.article_id = article_id
+                and abs( t_notes.id - @_start_id ) <= context_num;
+
+    else
+
+        select id as line_num, t_notes.article_id, text from t_notes 
+            where t_notes.article_id = article_id;
+
+    end if;
 
 end//
 
