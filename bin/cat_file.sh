@@ -11,7 +11,7 @@ fi
 _file=$1
 
 # only for utf-8 or ascii
-if file --mime $_file | grep -$GREP_REGEX_EXTEND 'charset=(utf-8|us-ascii)'
+if file --mime $_file | grep -$GREP_REGEX_EXTEND 'charset=(utf-8|us-ascii)' &>/dev/null
 then
 
 echo "@____filename:$_file"

@@ -22,13 +22,13 @@ fi
 # 4. 格式化输出
 # 5. 过滤茶杯字符: ERROR 1366 (HY000) at line 4508: Incorrect string value: '\xF0\x9F\x8D\xBA  ...' for column 'text' at row 1
 cat $INPUT \
-    | sed -$SED_REGEX_EXTEND -e "s/、/ \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/！/ \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/，/ \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/：/ \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/。/ \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/🍺 / \\0 /g" \
-    | sed -$SED_REGEX_EXTEND -e "s/[\"\\]/\\\\\0/g" \
+    | sed -$SED_REGEX_EXTEND -e "s/、/ & /g" \
+    | sed -$SED_REGEX_EXTEND -e "s/！/ & /g" \
+    | sed -$SED_REGEX_EXTEND -e "s/，/ & /g" \
+    | sed -$SED_REGEX_EXTEND -e "s/：/ & /g" \
+    | sed -$SED_REGEX_EXTEND -e "s/。/ & /g" \
+    | sed -$SED_REGEX_EXTEND -e "s/🍺 //g" \
+    | sed -$SED_REGEX_EXTEND -e "s/[\"\\]/\\\\&/g" \
     | grep -${GREP_REGEX_EXTEND}v "^$" \
     > $OUTPUT.tmp 
 
