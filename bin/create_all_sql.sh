@@ -16,7 +16,7 @@ fi
 # 这种方式解决文件名带空格的问题
 # find $INPUT_DIR -type f -iregex ".*\.\(txt\|js\|cpp\|h\|php\)$" \
 
-find $INPUT_DIR -type f \( \
+find $INPUT_DIR -type f -follow \( \
     -iregex ".*\.txt$" \
     -or -iregex ".*\.text$" \
     -or -iregex ".*\.php$" \
