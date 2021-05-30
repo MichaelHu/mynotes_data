@@ -18,7 +18,11 @@ BIN_DIR=$ROOT_DIR/bin
 # for i in `find $INPUT_DIR -type f -iregex ".*\.js$"`; do
 
 # 这种方式解决文件名带空格的问题
-find $INPUT_DIR -type f -iregex ".*rocket.*\.\(text\)$" \
+find $INPUT_DIR -type f -follow \( \
+         -iregex ".*front_end_mvc.*\.\(text\)$" \
+         -or -iregex ".*think_in_webapp.*\.\(text\)$" \
+         -or -iregex ".*rocket_docs.*\.\(text\)$" \
+         \) \
     -exec sh parse_markdown.sh {} \; \
     | grep -$GREP_REGEX_EXTEND "^insert into" \
     > $OUTPUT_DIR/markdown_data.sql

@@ -17,13 +17,17 @@ fi
 # find $INPUT_DIR -type f -iregex ".*\.\(txt\|js\|cpp\|h\|php\)$" \
 
 find $INPUT_DIR -type f -follow \( \
-    -iregex ".*\.txt$" \
-    -or -iregex ".*\.text$" \
-    -or -iregex ".*\.php$" \
-    -or -iregex ".*\.js$" \
-    -or -iregex ".*\.h$" \
-    -or -iregex ".*\.cpp$" \
+    -iregex ".*\.text$" \
+    -or -iregex ".*\.txt$" \
+    -or -iregex ".*\.md$" \
     \) \
     -exec sh cat_file.sh {} >> $INPUT_DIR/__TMP.tmptxt \;
+
+#    -iregex ".*\.txt$" \
+#    -or -iregex ".*\.text$" \
+#    -or -iregex ".*\.php$" \
+#    -or -iregex ".*\.js$" \
+#    -or -iregex ".*\.h$" \
+#    -or -iregex ".*\.cpp$" \
 
 sh $BIN_DIR/create_sql.sh $INPUT_DIR/__TMP.tmptxt $OUTPUT_DIR/data.sql 

@@ -14,6 +14,8 @@ $context = array(
     'file_path' => realpath($file_path)        
 );
 
+fprintf(STDERR, "FILE: %s\n", $file_path);
+
 $parser = new MarkdownParser($lexer, $context);
 
 $parser->disableDebug();
